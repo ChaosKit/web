@@ -1,0 +1,68 @@
+body {
+  font-family: "Lucida Grande", sans-serif;
+  font-size: 12px;
+  margin: 0;
+}
+
+button {
+  margin: 0 5px;
+}
+
+select {
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+}
+
+input.vertical {
+  -webkit-appearance: slider-vertical;
+  writing-mode: bt-lr;
+  display: inline-block;
+  width: 30px;
+  height: 130px;
+}
+
+.state {
+  color: #aaa;
+  font-size: 9px;
+  font-family: monospace;
+  margin-top: 10px;
+  word-break: break-all;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.canvas-container {
+  flex-grow: 1;
+}
+.control-container {
+  flex-basis: 220px;
+  flex-shrink: 0;
+}
+
+.controls {
+  margin: 10px 0;
+}
+.controls.offset {
+  margin-bottom: 40px;
+}
+
+#Canvas {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100vh;
+}

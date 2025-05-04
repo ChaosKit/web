@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "coffee -c -m chaoskit.coffee",
+    "watch": "coffee -c -w -m chaoskit.coffee"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.7.0"
+  }
+}
