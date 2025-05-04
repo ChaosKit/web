@@ -1,3 +1,19 @@
+:root {
+  --bg-color: #050505;
+  --panel-bg-color: #111;
+  --text-color: #f4f4f4;
+  --link-color: #ffb843;
+  --link-color-hover: #ffe5b0;
+}
+
+.inverted {
+  --bg-color: #fafafa;
+  --panel-bg-color: #f4f4f4;
+  --text-color: #1c1c1c;
+  --link-color: #9e6a12;
+  --link-color-hover: #e9a332;
+}
+
 html,
 body,
 .container {
@@ -7,12 +23,10 @@ body,
 }
 
 body {
-  background: #000;
+  background: var(--bg-color);
+  color: var(--text-color);
   font-family: "Lucida Grande", sans-serif;
   font-size: 12px;
-}
-body.inverted {
-  background: #fff;
 }
 
 h1 {
@@ -35,6 +49,17 @@ select {
 
 label {
   display: block;
+}
+
+input {
+  accent-color: var(--link-color);
+}
+
+a {
+  color: var(--link-color);
+}
+a:hover {
+  color: var(--link-color-hover);
 }
 
 input.vertical {
@@ -74,7 +99,6 @@ input.vertical {
 
 #Canvas {
   aspect-ratio: 1;
-  border-radius: 2px;
   display: block;
   margin: auto;
   max-width: 100%;
@@ -82,8 +106,8 @@ input.vertical {
 }
 
 .control-container {
-  background: rgba(255, 255, 255, .8);
   backdrop-filter: blur(16px);
+  background-color: color-mix(in srgb, var(--panel-bg-color) 70%, transparent);
   box-sizing: border-box;
   margin-top: 72vh;
   padding: 20px 10px;
@@ -102,7 +126,7 @@ input.vertical {
   margin-bottom: 10px;
 }
 
-.links img {
+.links svg {
   width: 1.14rem;
   height: 1.14rem;
 }
@@ -114,11 +138,10 @@ input.vertical {
 
   .control-container {
     backdrop-filter: none;
-    bottom: 0;
     margin-top: 0;
+    min-height: 100%;
     position: absolute;
     right: 0;
-    top: 0;
     width: 240px;
   }
 
