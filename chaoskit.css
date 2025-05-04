@@ -1,11 +1,27 @@
+html,
+body,
+.container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  background: #000;
   font-family: "Lucida Grande", sans-serif;
   font-size: 12px;
-  margin: 0;
+}
+body.inverted {
+  background: #fff;
 }
 
 h1 {
   font-size: 1.14rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.07rem;
   margin: 0;
 }
 
@@ -21,15 +37,6 @@ label {
   display: block;
 }
 
-header {
-  display: flex;
-  align-items: center;
-}
-
-header h1 {
-  flex-grow: 1;
-}
-
 input.vertical {
   direction: rtl;
   display: inline-block;
@@ -40,6 +47,7 @@ input.vertical {
 
 .state {
   color: #aaa;
+  display: none;
   font-size: 9px;
   font-family: monospace;
   margin-top: 10px;
@@ -50,31 +58,18 @@ input.vertical {
   display: none;
 }
 
-.container {
-  align-items: flex-start;
+.app-header {
   display: flex;
-  gap: 10px;
-  padding: 0 20px;
+  align-items: center;
+}
+
+.app-header h1 {
+  flex-grow: 1;
 }
 
 .canvas-container {
-  flex-grow: 1;
-}
-.control-container {
-  flex-basis: 220px;
-  flex-shrink: 0;
-}
-
-.controls {
-  margin: 10px 0;
-}
-.controls.offset {
-  margin-bottom: 24px;
-}
-
-.links img {
-  width: 1.14rem;
-  height: 1.14rem;
+  position: fixed;
+  inset: 0;
 }
 
 #Canvas {
@@ -83,5 +78,51 @@ input.vertical {
   display: block;
   margin: auto;
   max-width: 100%;
-  max-height: 100vh;
+  max-height: 72vh;
+}
+
+.control-container {
+  background: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(16px);
+  box-sizing: border-box;
+  margin-top: 72vh;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.controls {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.controls.offset {
+  margin-bottom: 20px;
+}
+
+.controls header {
+  margin-bottom: 10px;
+}
+
+.links img {
+  width: 1.14rem;
+  height: 1.14rem;
+}
+
+@media screen and (min-width: 768px) {
+  .canvas-container {
+    right: 240px;
+  }
+
+  .control-container {
+    backdrop-filter: none;
+    bottom: 0;
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 240px;
+  }
+
+  #Canvas {
+    max-height: 100vh;
+  }
 }

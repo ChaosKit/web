@@ -1033,6 +1033,7 @@
     }
     if (json.inverted !== null) {
       $('Inverted').checked = !!json.inverted;
+      document.body.classList.toggle('inverted', (json.preset === 'Emerald') !== !!json.inverted);
       shouldRefresh = true;
     }
     if ((ref = json.correction) != null ? ref.enabled : void 0) {
@@ -1078,7 +1079,7 @@
   };
 
   updateMapper = function() {
-    var a, b, c, preset, presetValue;
+    var a, b, c, isLightMode, preset, presetValue;
     presetValue = $('Preset').value;
     preset = presetValue === 'Custom' ? ($('CustomControls').className = "controls", createCustomMapper()) : ($('CustomControls').className = "controls hidden", Presets[presetValue]);
     if ($('Correction').checked) {
@@ -1090,6 +1091,8 @@
     } else {
       pixelMapper = preset(GridModifier.None);
     }
+    isLightMode = (presetValue === 'Emerald') !== $('Inverted').checked;
+    document.body.classList.toggle('inverted', isLightMode);
     if ($('Inverted').checked) {
       pixelMapper = PixelMapper.Inverse(pixelMapper);
     }

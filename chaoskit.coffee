@@ -734,6 +734,7 @@ updateFromState = (json) ->
 
   if json.inverted != null
     $('Inverted').checked = !!json.inverted
+    document.body.classList.toggle('inverted', (json.preset == 'Emerald') != !!json.inverted)
     shouldRefresh = true
 
   if json.correction?.enabled
@@ -783,6 +784,9 @@ updateMapper = ->
     pixelMapper = preset GridModifier.Corrected correctionCurve
   else
     pixelMapper = preset GridModifier.None
+
+  isLightMode = (presetValue == 'Emerald') != $('Inverted').checked
+  document.body.classList.toggle('inverted', isLightMode)
 
   if $('Inverted').checked
     pixelMapper = PixelMapper.Inverse(pixelMapper)
