@@ -620,7 +620,19 @@ $('Step').onclick = ->
   run()
 
 $('Save').onclick = ->
-  window.open(canvas.toDataURL('image/png'))
+  canvas.toBlob((blob) ->
+    url = URL.createObjectURL(blob)
+    win = window.open(url)
+    return unless win?
+
+    # Add a pagehide event after the page finishes loading to clean up memory.
+    # The onload is necessary because otherwise pagehide triggers
+    # immediately after opening, probably because the navigation
+    # redirects to the final destination.
+    win.onload = ->
+      win.onpagehide = ->
+        URL.revokeObjectURL(url)
+  'image/png')
 
 refreshingOperation = (fn) ->
   fn()

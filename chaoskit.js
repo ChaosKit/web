@@ -898,7 +898,23 @@
   };
 
   $('Save').onclick = function() {
-    return window.open(canvas.toDataURL('image/png'));
+    return canvas.toBlob(function(blob) {
+      var url, win;
+      url = URL.createObjectURL(blob);
+      win = window.open(url);
+      if (win == null) {
+        return;
+      }
+      // Add a pagehide event after the page finishes loading to clean up memory.
+      // The onload is necessary because otherwise pagehide triggers
+      // immediately after opening, probably because the navigation
+      // redirects to the final destination.
+      return win.onload = function() {
+        return win.onpagehide = function() {
+          return URL.revokeObjectURL(url);
+        };
+      };
+    }, 'image/png');
   };
 
   refreshingOperation = function(fn) {
