@@ -1019,7 +1019,7 @@
     }
     $('SyncBounds').checked = false;
     // Update rendering
-    validPresets = Array.from($('Formula').options).map(function(o) {
+    validPresets = Array.from($('Preset').options).map(function(o) {
       return o.value;
     });
     if (validPresets.includes(json.preset)) {

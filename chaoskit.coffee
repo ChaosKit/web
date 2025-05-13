@@ -722,7 +722,7 @@ updateFromState = (json) ->
   $('SyncBounds').checked = false
 
   # Update rendering
-  validPresets = Array.from($('Formula').options).map (o) -> o.value
+  validPresets = Array.from($('Preset').options).map (o) -> o.value
   if validPresets.includes(json.preset)
     $('Preset').value = json.preset
     shouldRefresh = true
