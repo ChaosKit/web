@@ -1110,7 +1110,7 @@
     return function(gridModifier) {
       var h, l, s;
       h = GridModifier.Added(hsl.h, GridModifier.Multiplied(shift, GridMapper.Logarithmic(velocityGrid)));
-      s = GridMapper.Constant(hsl.s);
+      s = GridModifier.Multiplied(hsl.s, GridModifier.Inverted(GridMapper.Logarithmic(accelerationGrid)));
       l = GridModifier.Multiplied(hsl.l, gridModifier(GridMapper.Logarithmic(positionGrid)));
       return PixelMapper.HSL(h, s, l);
     };
